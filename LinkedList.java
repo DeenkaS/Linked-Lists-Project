@@ -2,9 +2,8 @@ public class LinkedList {
     int head;
     LinkedList tail;
 
-    public LinkedList(int item, LinkedList list) {
+    public LinkedList(int item) {
         this.head = item;
-        tail = list;
     }
 
     public int head() {
