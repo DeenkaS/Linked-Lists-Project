@@ -4,7 +4,7 @@ public class listBench {
     public static void main(String[] args) {
         int k = 100_000;
         int contstantListLength = 99;
-         int[] bencharray = { 99, 199, 299, 399, 499, 599, 699, 799, 899, 999, 1099, 1199, 1299, 1399, 1499, 1599};
+        int[] bencharray = { 99, 199, 299, 399, 499, 599, 699, 799, 899, 999, 1099, 1199, 1299, 1399, 1499, 1599};
         Random rnd = new Random();
         LinkedList variableList = new LinkedList(1);
         LinkedList constantList = new LinkedList(1);
