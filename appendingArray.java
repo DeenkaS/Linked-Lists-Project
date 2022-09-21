@@ -3,19 +3,72 @@ import java.util.Random;
 public class appendingArray {
     public static void main(String []args){
         int k = 100_000;
-        int[] bencharray = { 99, 199, 299, 399, 499, 599, 699, 799, 899, 999, 1099, 1199, 1299, 1399, 1499, 1599};
-        int[] constantArray = new int[100];
+        int[] bencharray = { 100,100,100,100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600};
+        
         Random rnd = new Random();
-
-        int[] a = {1,2,3,4,5};
-        int[] b = {6,7,8,9,10};
-
-        a = appendarray(a,b);
-
-        for(int i = 0; i < a.length; i++)
-        System.out.println(a[i]);
+        long t0 = 0;
+        long tsum = 0;
 
         
+
+        System.out.println("Runtimes for appending a variable length array to the end of a constant length array: ");
+
+        for (int n : bencharray) {
+
+            int[] variableArray = new int[n];
+            int[] constantArray = new int[100];
+
+            for (int i = 0; i < k; i++) {
+
+                for (int l = 0; l < constantArray.length; l++) {
+                    constantArray[l] = rnd.nextInt(n);
+                }
+
+                for (int l = 0; l < n; l++) {
+                    variableArray[l] = rnd.nextInt(n);
+                }
+
+                t0 = System.nanoTime();
+                appendarray(constantArray, variableArray);
+                tsum += System.nanoTime() - t0;
+                
+            }
+            
+            System.out.print("(" + (n) + "," + (tsum / k) + ")");
+            tsum = 0;
+
+        }
+
+        System.out.println("\n\n");
+
+        System.out.println("Runtimes for appending a constant length array to the end of a variable length array: ");
+
+        for (int n : bencharray) {
+
+            int[] variableArray = new int[n];
+            int[] constantArray = new int[100];
+
+            for (int i = 0; i < k; i++) {
+
+                for (int l = 0; l < constantArray.length; l++) {
+                    constantArray[l] = rnd.nextInt(n);
+                }
+
+                for (int l = 0; l < n; l++) {
+                    variableArray[l] = rnd.nextInt(n);
+                }
+
+                t0 = System.nanoTime();
+                appendarray(variableArray, constantArray);
+                tsum += System.nanoTime() - t0;
+                
+            }
+            
+            System.out.print("(" + (n) + "," + (tsum / k) + ")");
+            tsum = 0;
+ 
+
+        }
 
 
 
@@ -26,14 +79,14 @@ public class appendingArray {
 
     public static int[] appendarray(int[] a,int[] b){
         int[] appendedArray = new int[a.length + b.length];
-        int bpos = b.length-1;
+        int lastpos = a.length;
         for(int i = 0; i < a.length; i++){
             appendedArray[i] = a[i];
         }
 
-        for(int i = a.length + b.length; i > a.length; i--){
-            appendedArray[i-1] = b[bpos];
-            bpos--;
+        for(int i = a.length; i > a.length + b.length; i++){
+            appendedArray[i-1] = b[lastpos];
+            lastpos++;
         }
         return appendedArray;
     }
