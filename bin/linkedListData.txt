@@ -1,0 +1,6 @@
+Runtimes for appending a variable length linked list to the end of a constant length linked list: 
+(100,815)(200,501)(300,574)(400,417)(500,503)(600,360)(700,419)(800,454)(900,513)(1000,430)(1100,730)(1200,20087)(1300,513)(1400,537)(1500,516)(1600,521)
+
+
+Runtimes for appending a constant length linked list to the end of a variable length linked list: 
+(100,404)(200,710)(300,943)(400,1215)(500,1417)(600,2974)(700,3019)(800,2381)(900,2648)(1000,2935)(1100,3313)(1200,3315)(1300,3645)(1400,4281)(1500,4428)(1600,4867)

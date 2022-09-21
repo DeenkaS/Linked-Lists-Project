@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class listBench {
     public static void main(String[] args) {
-        int k = 100_000;
+        int k = 100;
         int contstantListLength = 99;
         int[] bencharray = { 99, 199, 299, 399, 499, 599, 699, 799, 899, 999, 1099, 1199, 1299, 1399, 1499, 1599};
         Random rnd = new Random();
@@ -34,6 +34,7 @@ public class listBench {
             }
 
             System.out.print("(" + (n+1) + "," + (tsum / k) + ")");
+            tsum = 0;
 
         }
 
@@ -62,6 +63,7 @@ public class listBench {
             }
 
             System.out.print("(" + (n+1) + "," + (tsum / k) + ")");
+            tsum = 0;
 
         }
 
